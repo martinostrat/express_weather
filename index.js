@@ -51,7 +51,11 @@ app.all('/', (req, res) => {
         res.render('index', data);
     })
     .catch(error => {
-        res.render('index', {error: 'Problem with getting data, try again'})
+        if(city == '') {
+            res.render('index', {error: 'Linna nimi ei tohi olla tühi!'});
+        } else {
+            res.render('index', {error: 'Problem with getting data, try again'})
+        }
     })
 })
 
